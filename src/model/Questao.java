@@ -2,6 +2,8 @@ package model;
 import java.util.*;
 
 public class Questao {
+    private static int contador = 0;
+    private int id;
     private String enunciado;
     private String dificuldade;
     private String resposta;
@@ -10,15 +12,16 @@ public class Questao {
     private HashMap<Character, String> alternativas;
 
     public Questao() {
+        this.id = contador++;
         alternativas = new HashMap<>();
     }
 
     public Questao(String tema, String enunciado, String dificuldade, String resposta) {
+        this();
         setTema(tema);
         setEnunciado(enunciado);
         setDificuldade(dificuldade);
         setResposta(resposta);
-        alternativas = new HashMap<>();
     }
 
     public String getEnunciado() {
@@ -97,6 +100,7 @@ public class Questao {
 
 
     public String toString() {
+        System.out.println("(ID: " + id + "): ");
         System.out.println("Dificuldade: "+dificuldade);
         System.out.println();
         System.out.println(enunciado);

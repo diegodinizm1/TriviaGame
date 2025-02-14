@@ -1,6 +1,7 @@
 package view;
 
 import model.Trivia;
+import model.Usuario;
 
 import java.util.Scanner;
 
@@ -27,6 +28,16 @@ public class ConfiguracoesViewController {
                 trivia.setDificuldadeEscolhida(dificuldade);
                 break;
             case 3:
+                if (trivia.getUsuario() != null) {
+                    System.out.println("Usuario atual: " + trivia.getUsuario().getNome());
+                }
+                System.out.println("Digite o nome do novo usuário");
+                String nome = entrada.nextLine();
+                trivia.setUsuario(new Usuario(nome, 0));
+                break;
+            case 4:
+
+            case 5:
                 System.out.println("Configurações finalizadas.");
                 view.finalizar();
                 break;

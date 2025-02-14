@@ -34,7 +34,9 @@ public class ConfiguracoesView implements Observer {
 
             System.out.println("1 - Quantidade de questões por rodada:");
             System.out.println("2 - Dificuldade das questões");
-            System.out.println("3 - Finalizar Configuracoes");
+            System.out.println("3 - Trocar nome");
+            System.out.println("4 - Menu Questões");
+            System.out.println("5 - Finalizar Configuracoes");
             int opcao = entrada.nextInt();
             entrada.nextLine();
             controller.handleEvent(opcao, entrada);

@@ -4,14 +4,13 @@ import model.*;
 
 import java.util.Scanner;
 
-public class MenuPrincipalController implements Observer {
+public class MenuPrincipalController {
     private Trivia trivia;
     private MenuPrincipalView view;
 
     public void initMenuPrincipalController(Trivia trivia, MenuPrincipalView menuPrincipalView) {
         this.trivia = trivia;
         this.view = menuPrincipalView;
-        trivia.attachObserver(this);
     }
 
     public void handleEvent(int event, Scanner entrada) {
@@ -28,8 +27,4 @@ public class MenuPrincipalController implements Observer {
         }
     }
 
-    @Override
-    public void update() {
-
-    }
 }
