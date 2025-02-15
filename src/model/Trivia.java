@@ -70,10 +70,10 @@ public class Trivia {
 
     public void adicionarQuestao(Questao questao) {
         if(!questoes.containsKey(questao.getTema())){
-            questoes.put(questao.getTema(), new ArrayList<>());
+            questoes.put(questao.getTema().toLowerCase(), new ArrayList<>());
             incrementaTemas();
         }
-        questoes.get(questao.getTema()).add(questao);
+        questoes.get(questao.getTema().toLowerCase()).add(questao);
         notifica();
     }
 
@@ -84,10 +84,10 @@ public class Trivia {
         notifica();
     }
 
-    public void atualizarQuestao(Questao questao) {
+    public void atualizarQuestao(Questao questao, String atributo) {
         if(questoes.containsKey(questao.getTema())){
             if(questoes.get(questao.getTema()).contains(questao)){
-                // implementar
+
             }
         }
     }

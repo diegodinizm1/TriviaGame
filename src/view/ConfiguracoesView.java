@@ -24,9 +24,9 @@ public class ConfiguracoesView implements Observer {
 
     public void telaConfiguracoes() {
         do {
-            System.out.println("=======Configurações Trivia=======");
+            System.out.println("=======Configurações Trivia========");
             if(trivia.getNumQuestoes() > 0) {
-                System.out.println("Quantidade de questoes atual: " + numQuestoes);
+                System.out.println("Quantidade de questoes atual: " + trivia.getNumQuestoes());
             }
             if(trivia.getDificuldadeEscolhida() != null) {
                 System.out.println("Dificuldade atual: " + trivia.getDificuldadeEscolhida());
@@ -37,6 +37,7 @@ public class ConfiguracoesView implements Observer {
             System.out.println("3 - Trocar nome");
             System.out.println("4 - Menu Questões");
             System.out.println("5 - Finalizar Configuracoes");
+            System.out.println("===================================");
             int opcao = entrada.nextInt();
             entrada.nextLine();
             controller.handleEvent(opcao, entrada);

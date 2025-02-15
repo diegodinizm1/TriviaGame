@@ -67,6 +67,14 @@ public class Questao {
         }
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getTema() {
         return tema;
     }
@@ -96,6 +104,20 @@ public class Questao {
         alternativas.put('B', alternativa2);
         alternativas.put('C', alternativa3);
         alternativas.put('D', alternativa4);
+    }
+
+    public String mostrarAlternativas() {
+        StringBuilder sb = new StringBuilder();
+        char c = 'A';
+        for (String valor : getAlternativas().values()) {
+            sb.append(c).append(") ").append(valor).append("\n");
+            c++;
+        }
+        return sb.toString();
+    }
+
+    public void atualizarAlternativa(char letra, String alternativaNova) {
+        getAlternativas().put(Character.toUpperCase(letra), alternativaNova);
     }
 
 

@@ -28,8 +28,11 @@ public class MenuQuestoesView implements Observer {
         System.out.println("4 - Listar Questões");
         System.out.println("===========================");
         int opcao = entrada.nextInt();
-        //controller.handleEvent(opcao, entrada);
+        controller.handleEvent(opcao, entrada);
+    }
 
+    public void exibirMensagem(String mensagem) {
+        System.out.println(mensagem);
     }
 
     @Override
