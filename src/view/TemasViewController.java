@@ -14,8 +14,8 @@ public class TemasViewController {
         trivia.attachObserver(temasView);
     }
 
-    public void handleEvent(String event, Scanner entrada) {
+    public void handleEvent(String event) {
         QuestoesView questoesView = new QuestoesView();
-        questoesView.initQuestoesView(trivia, entrada, event);
+        questoesView.initQuestoesView(trivia, event);
     }
 }

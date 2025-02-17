@@ -10,11 +10,9 @@ public class MenuPrincipalView implements Observer {
     private MenuPrincipalController controller;
     private String nome;
     private boolean finalizada = false;
-    private Scanner entrada;
 
-    public void initMenuPrincipalView(Trivia trivia, Scanner entrada) {
+    public void initMenuPrincipalView(Trivia trivia) {
         this.trivia = trivia;
-        this.entrada = entrada;
         controller  = new MenuPrincipalController();
         controller.initMenuPrincipalController(trivia, this);
         trivia.attachObserver(this);
@@ -22,7 +20,9 @@ public class MenuPrincipalView implements Observer {
     }
 
     public void menuPrincipal() {
+
         do {
+            Scanner entrada = new Scanner(System.in);
             System.out.println("=======Trivia Quiz=======");
             if(trivia.getUsuario() != null) {
                 System.out.println("Bem vindo, "+ trivia.getUsuario().getNome());
@@ -34,9 +34,8 @@ public class MenuPrincipalView implements Observer {
             System.out.println("\n=========================");
             int opcao = entrada.nextInt();
             entrada.nextLine();
-            controller.handleEvent(opcao, entrada);
+            controller.handleEvent(opcao);
         }while(!finalizada);
-        //sc.close();
     }
 
 

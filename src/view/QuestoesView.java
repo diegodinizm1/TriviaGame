@@ -11,13 +11,11 @@ public class QuestoesView implements Observer {
     private String temaEscolhido;
     private Trivia trivia;
     private QuestoesViewController controller;
-    private Scanner chute;
     private int indiceAtual;
     ArrayList<Questao> questoesDoTema;
 
-    public void initQuestoesView(Trivia trivia, Scanner chute, String temaEscolhido){
+    public void initQuestoesView(Trivia trivia, String temaEscolhido){
         this.trivia = trivia;
-        this.chute = chute;
         setTemaEscolhido(temaEscolhido);
         controller = new QuestoesViewController();
         controller.initQuestoesViewController(trivia, this);
@@ -35,29 +33,25 @@ public class QuestoesView implements Observer {
     }
 
     public void comecarQuiz() {
-        int indice = 1;
-
-        for (Questao questao : questoesDoTema) {
-            System.out.printf("Pergunta %d de %d:%n", indice, questoesDoTema.size());
-            System.out.println(questao);
-
-            char resposta = Character.toUpperCase(chute.nextLine().charAt(0));
-
-            if (resposta < 'A' || resposta > 'D') {
-                System.out.println("Resposta inválida. Tente novamente.");
-                continue;
+        Scanner resposta = new Scanner(System.in);
+        int indice = 0;
+        System.out.println("1 - Começar Quiz");
+        System.out.println("0 - Voltar");
+        while(controller.getProximaQuestao(temaEscolhido, indice) != null) {
+            System.out.println(controller.getProximaQuestao(temaEscolhido, indice));
+            char alternativa = resposta.nextLine().charAt(0);
+            if(controller.checarResposta(temaEscolhido, indice, alternativa)){
+                System.out.println("Correto!");
+            }else{
+                System.out.println("Alternativa errada!");
             }
-
-            controller.handleEvent(questao, resposta);
             indice++;
         }
-
+        if(controller.getProximaQuestao(temaEscolhido, indice) == null){
+            System.out.println("Todas as questões respondidas.");
+        }
         System.out.println("Quiz finalizado!");
         System.out.println("Pontuação do usuário "+ trivia.getUsuario().getNome()+": " + trivia.getUsuario().getPontuacao());
-    }
-
-    public void correcaoQuestao(String mensagem){
-        System.out.println(mensagem);
     }
 
 

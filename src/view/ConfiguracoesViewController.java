@@ -14,7 +14,9 @@ public class ConfiguracoesViewController {
         this.view = configuracoesView;
     }
 
-    public void handleEvent(int opcao, Scanner entrada) {
+    public void handleEvent(int opcao) {
+        Scanner entrada = new Scanner(System.in);
+
         switch (opcao) {
             case 1:
 
@@ -38,13 +40,15 @@ public class ConfiguracoesViewController {
                 }
                 System.out.println("Digite o nome do novo usuário");
                 String nome = entrada.nextLine();
-                trivia.setUsuario(new Usuario(nome, 0));
+                Usuario usuario = new Usuario(nome, 0);
+                trivia.setUsuario(usuario);
+                trivia.getRanking().adicionarUsuario(usuario);
                 break;
 
             case 4:
 
                 MenuQuestoesView menuQuestoesView = new MenuQuestoesView();
-                menuQuestoesView.initMenuQuestoesView(trivia, entrada);
+                menuQuestoesView.initMenuQuestoesView(trivia);
 
             case 5:
 

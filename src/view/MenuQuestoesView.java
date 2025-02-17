@@ -9,11 +9,9 @@ public class MenuQuestoesView implements Observer {
     private MenuQuestoesViewController controller;
     private int numQuestoes;
     private boolean finalizada = false;
-    private Scanner entrada;
 
-    public void initMenuQuestoesView(Trivia trivia, Scanner entrada) {
+    public void initMenuQuestoesView(Trivia trivia) {
         this.trivia = trivia;
-        this.entrada = entrada;
         controller = new MenuQuestoesViewController();
         controller.initMenuQuestoesController(trivia, this);
         trivia.attachObserver(this);
@@ -21,6 +19,7 @@ public class MenuQuestoesView implements Observer {
     }
 
     public void menuQuestoes() {
+        Scanner entrada = new Scanner(System.in);
         System.out.println("=======Menu Questoes=======");
         System.out.println("1 - Adicionar Questão");
         System.out.println("2 - Remover Questão");
@@ -28,7 +27,7 @@ public class MenuQuestoesView implements Observer {
         System.out.println("4 - Listar Questões");
         System.out.println("===========================");
         int opcao = entrada.nextInt();
-        controller.handleEvent(opcao, entrada);
+        controller.handleEvent(opcao);
     }
 
     public void exibirMensagem(String mensagem) {

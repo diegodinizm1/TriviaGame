@@ -15,21 +15,23 @@ public class MenuQuestoesViewController {
         this.menuQuestoesView = menuQuestoesView;
     }
 
-    public void handleEvent(int event, Scanner entrada) {
+    public void handleEvent(int event) {
         switch (event) {
             case 1:
-                addPergunta(entrada);
+                addPergunta();
                 break;
             case 2:
-                removerQuestao(entrada);
+                removerQuestao();
                 break;
             case 3:
-                atualizarQuestao(entrada);
+                atualizarQuestao();
                 break;
         }
     }
 
-    private void addPergunta(Scanner entrada) {
+    private void addPergunta() {
+
+        Scanner entrada = new Scanner(System.in);
 
         entrada.nextLine();
 
@@ -64,7 +66,10 @@ public class MenuQuestoesViewController {
         trivia.adicionarQuestao(questao);
     }
 
-    private void removerQuestao(Scanner entrada) {
+    private void removerQuestao() {
+
+        Scanner entrada = new Scanner(System.in);
+
         entrada.nextLine();
 
         menuQuestoesView.exibirMensagem("Qual o tema da questão que deseja remover?");
@@ -107,7 +112,8 @@ public class MenuQuestoesViewController {
         return "";
     }
 
-    private void atualizarQuestao(Scanner entrada) {
+    private void atualizarQuestao() {
+        Scanner entrada = new Scanner(System.in);
         entrada.nextLine();
 
         menuQuestoesView.exibirMensagem("Qual o tema da pergunta que deseja atualizar?");

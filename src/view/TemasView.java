@@ -10,11 +10,9 @@ public class TemasView implements Observer {
     private TemasViewController controller;
     private int numTemas;
     private boolean finalizada = false;
-    private Scanner entrada;
 
-    public void initTemasView(Trivia trivia, Scanner entrada) {
+    public void initTemasView(Trivia trivia) {
         this.trivia = trivia;
-        this.entrada = entrada;
         controller = new TemasViewController();
         controller.initTemasViewController(trivia, this);
         trivia.attachObserver(this);
@@ -22,15 +20,18 @@ public class TemasView implements Observer {
     }
 
     public void menuTemas() {
+        Scanner entrada = new Scanner(System.in);
         if (trivia.getUsuario() == null) {
             System.out.println("Qual o seu nome?");
             String nome = entrada.nextLine();
-            trivia.setUsuario(new Usuario(nome, 0));
+            Usuario usuario = new Usuario(nome, 0);
+            trivia.setUsuario(usuario);
+            trivia.getRanking().adicionarUsuario(usuario);
         }
 
         System.out.println("======= Temas =======");
 
-        ArrayList<String> temas = new ArrayList<>(trivia.getQuestoes().keySet()); // Convertendo o keySet para List
+        ArrayList<String> temas = new ArrayList<>(trivia.getQuestoes().keySet());
 
         if (temas.isEmpty()) {
             System.out.println("Nenhum tema encontrado.");
@@ -48,7 +49,7 @@ public class TemasView implements Observer {
         if (opcao >= 1 && opcao <= temas.size()) {
             String temaEscolhido = temas.get(opcao - 1);
             System.out.println("Você escolheu o tema: " + temaEscolhido);
-            controller.handleEvent(temaEscolhido, entrada);
+            controller.handleEvent(temaEscolhido);
         } else {
             System.out.println("Opção inválida. Tente novamente.");
         }

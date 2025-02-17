@@ -10,12 +10,10 @@ public class ConfiguracoesView implements Observer {
     private boolean finalizada;
     private String dificuldadeSelecionada;
     private int numQuestoes;
-    private Scanner entrada;
 
 
-    public void initConfiguracoesView(Trivia trivia, Scanner entrada) {
+    public void initConfiguracoesView(Trivia trivia) {
         this.trivia = trivia;
-        this.entrada = entrada;
         controller = new ConfiguracoesViewController();
         controller.initConfiguracoesViewController(trivia, this);
         trivia.attachObserver(this);
@@ -24,6 +22,7 @@ public class ConfiguracoesView implements Observer {
 
     public void telaConfiguracoes() {
         do {
+            Scanner entrada = new Scanner(System.in);
             System.out.println("=======Configurações Trivia========");
             if(trivia.getNumQuestoes() > 0) {
                 System.out.println("Quantidade de questoes atual: " + trivia.getNumQuestoes());
@@ -40,7 +39,7 @@ public class ConfiguracoesView implements Observer {
             System.out.println("===================================");
             int opcao = entrada.nextInt();
             entrada.nextLine();
-            controller.handleEvent(opcao, entrada);
+            controller.handleEvent(opcao);
             trivia.detachObserver(this);
         }while(!finalizada);
     }

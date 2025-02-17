@@ -13,16 +13,23 @@ public class MenuPrincipalController {
         this.view = menuPrincipalView;
     }
 
-    public void handleEvent(int event, Scanner entrada) {
+    public void handleEvent(int event) {
         switch (event) {
             case 1:
                 TemasView jogarView = new TemasView();
-                jogarView.initTemasView(trivia, entrada);
+                jogarView.initTemasView(trivia);
                 break;
 
             case 2:
                 ConfiguracoesView configView = new ConfiguracoesView();
-                configView.initConfiguracoesView(trivia, entrada);
+                configView.initConfiguracoesView(trivia);
+                break;
+            case 3:
+                RankingView rankingView = new RankingView();
+                rankingView.initRankingView(trivia, trivia.getRanking());
+                break;
+            case 4:
+                view.finalizar();
                 break;
         }
     }
