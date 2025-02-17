@@ -29,7 +29,7 @@ public class TemasView implements Observer {
             trivia.getRanking().adicionarUsuario(usuario);
         }
 
-        System.out.println("======= Temas =======");
+        System.out.println("\n=========== Temas =============");
 
         ArrayList<String> temas = new ArrayList<>(trivia.getQuestoes().keySet());
 
@@ -39,8 +39,10 @@ public class TemasView implements Observer {
         }
 
         for (int i = 0; i < temas.size(); i++) {
-            System.out.printf("%d - %s\n", i + 1, temas.get(i));
+            System.out.printf("%d - %s\n", i + 1, temas.get(i).toUpperCase());
         }
+
+        System.out.println("===============================");
 
         System.out.println("Escolha um tema pelo número:");
         int opcao = entrada.nextInt();
@@ -49,6 +51,7 @@ public class TemasView implements Observer {
         if (opcao >= 1 && opcao <= temas.size()) {
             String temaEscolhido = temas.get(opcao - 1);
             System.out.println("Você escolheu o tema: " + temaEscolhido);
+            System.out.println("Total de Questoes: " + trivia.getQuestoes().get(temaEscolhido).size());
             controller.handleEvent(temaEscolhido);
         } else {
             System.out.println("Opção inválida. Tente novamente.");

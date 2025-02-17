@@ -35,8 +35,6 @@ public class QuestoesView implements Observer {
     public void comecarQuiz() {
         Scanner resposta = new Scanner(System.in);
         int indice = 0;
-        System.out.println("1 - Começar Quiz");
-        System.out.println("0 - Voltar");
         while(controller.getProximaQuestao(temaEscolhido, indice) != null) {
             System.out.println(controller.getProximaQuestao(temaEscolhido, indice));
             char alternativa = resposta.nextLine().charAt(0);
@@ -52,6 +50,10 @@ public class QuestoesView implements Observer {
         }
         System.out.println("Quiz finalizado!");
         System.out.println("Pontuação do usuário "+ trivia.getUsuario().getNome()+": " + trivia.getUsuario().getPontuacao());
+    }
+
+    public void exibirMensagem(String mensagem){
+        System.out.println(mensagem);
     }
 
 

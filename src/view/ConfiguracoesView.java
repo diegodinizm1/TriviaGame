@@ -24,18 +24,9 @@ public class ConfiguracoesView implements Observer {
         do {
             Scanner entrada = new Scanner(System.in);
             System.out.println("=======Configurações Trivia========");
-            if(trivia.getNumQuestoes() > 0) {
-                System.out.println("Quantidade de questoes atual: " + trivia.getNumQuestoes());
-            }
-            if(trivia.getDificuldadeEscolhida() != null) {
-                System.out.println("Dificuldade atual: " + trivia.getDificuldadeEscolhida());
-            }
-
-            System.out.println("1 - Quantidade de questões por rodada:");
-            System.out.println("2 - Dificuldade das questões");
-            System.out.println("3 - Trocar nome");
-            System.out.println("4 - Menu Questões");
-            System.out.println("5 - Finalizar Configuracoes");
+            System.out.println("1 - Trocar Usuário");
+            System.out.println("2 - Menu Questões");
+            System.out.println("3 - Finalizar Configuracoes");
             System.out.println("===================================");
             int opcao = entrada.nextInt();
             entrada.nextLine();

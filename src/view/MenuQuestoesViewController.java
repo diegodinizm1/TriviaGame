@@ -33,8 +33,6 @@ public class MenuQuestoesViewController {
 
         Scanner entrada = new Scanner(System.in);
 
-        entrada.nextLine();
-
         menuQuestoesView.exibirMensagem("Digite o tema da pergunta:");
         String tema = entrada.nextLine();
 

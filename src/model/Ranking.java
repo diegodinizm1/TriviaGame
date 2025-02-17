@@ -12,7 +12,7 @@ public class Ranking {
         this.usuarios = new ArrayList<Usuario>();
     }
 
-    //adicionando um usuario ao ranking
+
     public void adicionarUsuario(Usuario usuario){
         ordernarUsuarios();
         usuarios.add(usuario);

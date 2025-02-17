@@ -20,21 +20,6 @@ public class ConfiguracoesViewController {
         switch (opcao) {
             case 1:
 
-                System.out.print("Digite a quantidade de questões por rodada: ");
-                int qtd = entrada.nextInt();
-                entrada.nextLine();
-                trivia.setNumQuestoes(qtd);
-                break;
-
-            case 2:
-
-                System.out.print("Escolha a dificuldade (Fácil, Normal, Difícil): ");
-                String dificuldade = entrada.next();
-                trivia.setDificuldadeEscolhida(dificuldade);
-                break;
-
-            case 3:
-
                 if (trivia.getUsuario() != null) {
                     System.out.println("Usuario atual: " + trivia.getUsuario().getNome());
                 }
@@ -45,12 +30,12 @@ public class ConfiguracoesViewController {
                 trivia.getRanking().adicionarUsuario(usuario);
                 break;
 
-            case 4:
+            case 2:
 
                 MenuQuestoesView menuQuestoesView = new MenuQuestoesView();
                 menuQuestoesView.initMenuQuestoesView(trivia);
 
-            case 5:
+            case 3:
 
                 System.out.println("Configurações finalizadas.");
                 view.finalizar();

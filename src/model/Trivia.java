@@ -1,12 +1,12 @@
 package model;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class Trivia {
     private HashMap<String, ArrayList<Questao>> questoes;
     private ArrayList<Observer> observers;
     private Usuario usuario;
+    private Ranking ranking;
     private String dificuldadeEscolhida;
     private int numQuestoes;
     private int numTemas;
@@ -14,6 +14,7 @@ public class Trivia {
     public Trivia() {
         questoes = new HashMap<>();
         observers = new ArrayList<>();
+        ranking = new Ranking();
     }
 
     public HashMap<String, ArrayList<Questao>> getQuestoes() {
@@ -45,12 +46,28 @@ public class Trivia {
         notifica();
     }
 
+    public void setRanking(Ranking ranking) {
+        this.ranking = ranking;
+        notifica();
+    }
+    public Ranking getRanking() {
+        return ranking;
+    }
+
     public String getDificuldadeEscolhida() {
         return dificuldadeEscolhida;
     }
 
-    public void setDificuldadeEscolhida(String dificuldadeEscolhida) {
-        this.dificuldadeEscolhida = dificuldadeEscolhida;
+    public void setDificuldadeEscolhida(int dificuldadeEscolhida) {
+        if(dificuldadeEscolhida == 1){
+            this.dificuldadeEscolhida = "Fácil";
+        }else if(dificuldadeEscolhida == 2){
+            this.dificuldadeEscolhida = "Normal";
+        }else if(dificuldadeEscolhida == 3){
+            this.dificuldadeEscolhida = "Difícil";
+        }else{
+            throw new IllegalArgumentException("Dificuldade escolhida inválida");
+        }
         notifica();
     }
 
@@ -69,7 +86,7 @@ public class Trivia {
     }
 
     public void adicionarQuestao(Questao questao) {
-        if(!questoes.containsKey(questao.getTema())){
+        if(!questoes.containsKey(questao.getTema().toLowerCase().trim())){
             questoes.put(questao.getTema().toLowerCase(), new ArrayList<>());
             incrementaTemas();
         }
@@ -82,39 +99,6 @@ public class Trivia {
             questoes.get(questao.getTema()).remove(questao);
         }
         notifica();
-    }
-
-    public void atualizarQuestao(Questao questao, String atributo) {
-        if(questoes.containsKey(questao.getTema())){
-            if(questoes.get(questao.getTema()).contains(questao)){
-
-            }
-        }
-    }
-
-    public void mostrarQuestoes(String tema, int numQuestoes, String dificuldadeEscolhida) {
-        ArrayList<Questao> questoesEscolhidas = questoes.get(tema);
-        if(numQuestoes > questoesEscolhidas.size()){
-            numQuestoes = questoesEscolhidas.size();
-        }
-        if(dificuldadeEscolhida == null){
-            dificuldadeEscolhida = "Normal";
-        }
-        for(int i = 0; i < numQuestoes; i++){
-            if(questoesEscolhidas.get(i).getDificuldade().equals(dificuldadeEscolhida)){
-                System.out.println(questoesEscolhidas.get(i));
-            }
-        }
-
-    }
-
-    public void mostrarTemas(){
-        int index = 1;
-        for (String tema : questoes.keySet()) {
-            System.out.printf("\n%d - %s\n", index, tema);
-            index++;
-        }
-
     }
 
     public int getNumQuestoes() {
@@ -257,5 +241,128 @@ public class Trivia {
                 "A unidade de gerenciamento de energia do processador."
         );
         adicionarQuestao(q10);
+
+        Questao q11 = new Questao("Programação Orientada a Objetos",
+                "Qual é a diferença entre classe e objeto?",
+                "Fácil",
+                "Classe é o molde e objeto é a instância da classe.");
+        q11.setAlternativas(
+                "Classe é o molde e objeto é a instância da classe.",
+                "Classe é a instância e objeto é o molde da classe.",
+                "Classe é o objeto e objeto é a classe.",
+                "Classe é a instância e objeto é o molde da classe."
+        );
+        adicionarQuestao(q11);
+
+        Questao q12 = new Questao("Programação Orientada a Objetos",
+                "O que é polimorfismo?",
+                "Normal",
+                "Capacidade de um objeto poder ser referenciado de várias formas.");
+        q12.setAlternativas(
+                "Capacidade de um objeto poder ser referenciado de várias formas.",
+                "Capacidade de um objeto poder ser referenciado de uma única forma.",
+                "Capacidade de um objeto poder ser referenciado de várias classes.",
+                "Capacidade de um objeto poder ser referenciado de várias interfaces."
+        );
+        adicionarQuestao(q12);
+
+        Questao q13 = new Questao("Programação Orientada a Objetos",
+                "O que é encapsulamento?",
+                "Fácil",
+                "Ocultar o estado interno de um objeto e expor apenas o necessário.");
+        q13.setAlternativas(
+                "Ocultar o estado interno de um objeto e expor apenas o necessário.",
+                "Expor o estado interno de um objeto e ocultar o necessário.",
+                "Ocultar o estado interno de um objeto e expor tudo.",
+                "Expor o estado interno de um objeto e ocultar tudo."
+        );
+        adicionarQuestao(q13);
+
+        Questao q14 = new Questao("Programação Orientada a Objetos",
+                "O que é herança?",
+                "Normal",
+                "Capacidade de criar uma nova classe a partir de uma já existente.");
+        q14.setAlternativas(
+                "Capacidade de criar uma nova classe a partir de uma já existente.",
+                "Capacidade de criar uma nova classe a partir de uma interface.",
+                "Capacidade de criar uma nova interface a partir de uma já existente.",
+                "Capacidade de criar uma nova interface a partir de uma classe."
+        );
+        adicionarQuestao(q14);
+
+        Questao q15 = new Questao("Estruturas de Dados",
+                "O que é uma pilha?",
+                "Fácil",
+                "Estrutura de dados que segue o princípio LIFO.");
+        q15.setAlternativas(
+                "Estrutura de dados que segue o princípio LIFO.",
+                "Estrutura de dados que segue o princípio FIFOUL.",
+                "Estrutura de dados que se acumula.",
+                "Estrutura de dados que segue o princípio de arvore binária."
+        );
+        adicionarQuestao(q15);
+
+        //Tema: desenvolvimento web
+        Questao q16 = new Questao("Desenvolvimento Web",
+                "Quais são as três principais tecnologias utilizadas no desenvolvimento de páginas web?",
+                "Normal",
+                "HTML, CSS e JavaScript");
+        q16.setAlternativas(
+                "HTML, CSS e JavaScript",
+                "Java, Python e C++",
+                "PHP, Ruby e C#",
+                "C, C++ e Assembly"
+        );
+        adicionarQuestao(q16);
+
+        Questao q17 = new Questao("Desenvolvimento Web",
+                "O que é um site responsivo?",
+                "Fácil",
+                "Um site que se adapta a diferentes tamanhos de tela e dispositivos.");
+        q17.setAlternativas(
+                "Um site que se adapta a diferentes tamanhos de tela e dispositivos.",
+                "Um site que responde a comandos de voz.",
+                "Um site que responde a comandos de gestos.",
+                "Um site que responde a comandos de teclado."
+        );
+        adicionarQuestao(q17);
+
+        Questao q18 = new Questao("Desenvolvimento Web",
+                "O que é um framework?",
+                "Normal",
+                "Conjunto de bibliotecas e ferramentas que facilitam o desenvolvimento de software.");
+        q18.setAlternativas(
+                "Conjunto de bibliotecas e ferramentas que facilitam o desenvolvimento de software.",
+                "Conjunto de classes e métodos que facilitam o desenvolvimento de software.",
+                "Conjunto de funções e métodos que facilitam o desenvolvimento de software.",
+                "Conjunto de classes e funções que facilitam o desenvolvimento de software."
+        );
+        adicionarQuestao(q18);
+
+        Questao q19 = new Questao("Desenvolvimento Web",
+                "O que é um servidor web?",
+                "Normal",
+                "Software que recebe requisições HTTP e envia respostas.");
+        q19.setAlternativas(
+                "Software que recebe requisições HTTP e envia respostas.",
+                "Software que envia requisições HTTP e recebe respostas.",
+                "Software que envia e recebe requisições HTTP.",
+                "Software que envia e recebe respostas HTTP."
+        );
+        adicionarQuestao(q19);
+
+        Questao q20 = new Questao("Desenvolvimento Web",
+                "O que é um banco de dados?",
+                "Fácil",
+                "Conjunto de dados organizados de forma estruturada.");
+        q20.setAlternativas(
+                "Conjunto de dados organizados de forma estruturada.",
+                "Conjunto de dados organizados de forma linear.",
+                "Conjunto de dados organizados de forma hierárquica.",
+                "Conjunto de dados organizados de forma aleatória."
+        );
+        adicionarQuestao(q20);
     }
+
+
 }
