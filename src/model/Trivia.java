@@ -759,6 +759,18 @@ public class Trivia {
         );
         adicionarQuestao(q51);
 
+        //Tema: Segurança da Informação
+        Questao q52 = new Questao("Segurança da Informação",
+                "O que é um ataque de ransomware?",
+                "Difícil",
+                "Ataque que criptografa arquivos e exige um resgate para liberá-los.");
+        q52.setAlternativas(
+                "Ataque que tenta alterar o comportamento de um computador.",
+                "Ataque que tenta alterar o conteúdo de um arquivo.",
+                "Ataque que tenta alterar o conteúdo de um arquivo e alterar o comportamento de um computador.",
+                "Ataque que criptografa arquivos e exige um resgate para liberá-los."
+        );
+        adicionarQuestao(q52);
     }
 
 

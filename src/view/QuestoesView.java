@@ -37,7 +37,13 @@ public class QuestoesView implements Observer {
         int indice = 0;
         while(controller.getProximaQuestao(temaEscolhido, indice) != null) {
             System.out.println(controller.getProximaQuestao(temaEscolhido, indice));
-            char alternativa = resposta.nextLine().charAt(0);
+            char alternativa = Character.toUpperCase(resposta.nextLine().charAt(0));
+
+            if(alternativa <'A' || alternativa > 'D'){
+                System.out.println("Opção inválida!");
+                continue;
+            }
+
             if(controller.checarResposta(temaEscolhido, indice, alternativa)){
                 System.out.println("Correto!");
             }else{
