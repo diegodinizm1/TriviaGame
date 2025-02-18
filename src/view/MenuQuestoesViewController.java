@@ -26,6 +26,8 @@ public class MenuQuestoesViewController {
             case 3:
                 atualizarQuestao();
                 break;
+            case 0:
+                break;
         }
     }
 

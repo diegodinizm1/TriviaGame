@@ -16,8 +16,8 @@ public class ConfiguracoesViewController {
 
     public void handleEvent(int opcao) {
         Scanner entrada = new Scanner(System.in);
-
         switch (opcao) {
+
             case 1:
 
                 if (trivia.getUsuario() != null) {
@@ -40,6 +40,9 @@ public class ConfiguracoesViewController {
                 System.out.println("Configurações finalizadas.");
                 view.finalizar();
                 break;
+
+            case 0:
+                view.finalizar();
 
             default:
                 System.out.println("Opção inválida.");

@@ -31,6 +31,8 @@ public class MenuPrincipalController {
             case 4:
                 view.finalizar();
                 break;
+            default:
+                System.out.println("Opção inválida");
         }
     }
 

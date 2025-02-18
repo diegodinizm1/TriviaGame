@@ -27,6 +27,7 @@ public class ConfiguracoesView implements Observer {
             System.out.println("1 - Trocar Usuário");
             System.out.println("2 - Menu Questões");
             System.out.println("3 - Finalizar Configuracoes");
+            System.out.println("0 - Sair");
             System.out.println("===================================");
             int opcao = entrada.nextInt();
             entrada.nextLine();

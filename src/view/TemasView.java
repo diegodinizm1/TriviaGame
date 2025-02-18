@@ -42,6 +42,7 @@ public class TemasView implements Observer {
             System.out.printf("%d - %s\n", i + 1, temas.get(i).toUpperCase());
         }
 
+        System.out.println("0 - Sair");
         System.out.println("===============================");
 
         System.out.println("Escolha um tema pelo número:");
@@ -54,6 +55,9 @@ public class TemasView implements Observer {
             System.out.println("Total de Questoes: " + trivia.getQuestoes().get(temaEscolhido).size());
             controller.handleEvent(temaEscolhido);
         } else {
+            if(opcao == 0){
+                finalizada = true;
+            }
             System.out.println("Opção inválida. Tente novamente.");
         }
     }

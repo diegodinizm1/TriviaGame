@@ -28,7 +28,6 @@ public class Ranking {
             }
         });
     }
-    //usuarios.sort((u1, u2) -> u2.getPontuacao() - u1.getPontuacao());
 
 
     public List<Usuario> getUsuarios(){

@@ -24,7 +24,7 @@ public class MenuQuestoesView implements Observer {
         System.out.println("1 - Adicionar Questão");
         System.out.println("2 - Remover Questão");
         System.out.println("3 - Atualizar Questão");
-        System.out.println("4 - Listar Questões");
+        System.out.println("0 - Voltar");
         System.out.println("===========================\n");
         int opcao = entrada.nextInt();
         controller.handleEvent(opcao);
